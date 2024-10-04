@@ -116,10 +116,10 @@ plt.ylim(sta, end)
 plt.xticks(np.arange(len(categories)) + bar_width * 1.5, categories)  # 设置x轴刻度位置
 legend = plt.legend(ncol=4, fontsize="13", frameon=False, loc='upper center')
 
-plt.savefig(f'abolish/{NAME}_abolish_600.png', dpi=600)
-plt.savefig(f'abolish/{NAME}_abolish_1200.png', dpi=1200)
+# plt.savefig(f'abolish/{NAME}_abolish_600.png', dpi=600)
+# plt.savefig(f'abolish/{NAME}_abolish_1200.png', dpi=1200)
 
-plt.savefig(f'abolish/{NAME}_abolish.eps')
+# plt.savefig(f'abolish/{NAME}_abolish.eps')
 
 # 显示图形
 # plt.show()

@@ -19,7 +19,7 @@ plt.figure(figsize=(10, 8))  # 根据需要调整宽度和高度
 plt.grid(color='white', linestyle='-', linewidth=1)  # 添加白色网格线
 plt.gca().set_facecolor('#f5f5f5')  
 
-name = "REmvUT"
+name = "REUT"
 with open(f'fold/{name}.txt', 'r') as file:
     while True:
         # 读取3行
