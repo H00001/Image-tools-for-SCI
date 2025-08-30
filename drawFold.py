@@ -83,7 +83,7 @@ plt.legend()
 
 
 
-
-plt.savefig(f"fold/{name}_600.png",dpi=600)
-plt.savefig(f"fold/{name}_1200.png",dpi=1200)
+plt.show()
+# plt.savefig(f"fold/{name}_600.png",dpi=600)
+# plt.savefig(f"fold/{name}_1200.png",dpi=1200)
 

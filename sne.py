@@ -2,14 +2,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.manifold import TSNE
+import torch
 
 def t_sne(embeds, labels, sample_num, low):
     """
@@ -45,10 +38,10 @@ def t_sne(embeds, labels, sample_num, low):
     norm_ts_embeds = (ts_embeds - x_min) / (x_max - x_min)
 
     # Plot
-    plt.rcParams["font.family"] = "Times New Roman"
+    plt.rcParams["font.family"] = "Microsoft Yahei"
     fig, ax = plt.subplots()
-    scatter = ax.scatter(norm_ts_embeds[:, 0], norm_ts_embeds[:, 1], c=sample_labels, cmap=cool_cmap, s=10)
-    # legend1 = ax.legend(*scatter.legend_elements(), title="Classes")
+    scatter = ax.scatter(norm_ts_embeds[:, 0], norm_ts_embeds[:, 1], c=sample_labels, cmap=cool_cmap, s=12 + 3000/sample_num)
+    legend1 = ax.legend(*scatter.legend_elements(), title="Classes")
     # ax.add_artist(legend1)
     plt.xticks([])
     plt.yticks([])
@@ -57,6 +50,23 @@ def t_sne(embeds, labels, sample_num, low):
     return fig
 
 if __name__ == '__main__':
+    _type = "preds_client_"
+    # _type = "client_z_"
+    # _type = "emb_client_"
+
+    for i in range(0, 7 ,1):
+        z = torch.load(rf"E:\donwload\Image-tools-for-SCI-main\emb\{_type}{i}.pt", map_location=torch.device('cpu'))
+        print(z.shape)
+        # print(z)
+        L = np.loadtxt(rf"E:\donwload\Image-tools-for-SCI-main\emb\{i}.txt")
+        if i == 6:
+            f = t_sne(z.detach().numpy(),L,z.shape[0],3)
+        else:
+            f = t_sne(z.detach().numpy(),L,z.shape[0],2)
+        # plt.show(block=True)
+        plt.tight_layout()
+        plt.savefig("./tsne/"+_type+f"{i}.svg")
+
     # list = ["acm","dblp","reut","hhar","cite"]
     # for v in list:
     #     ori = f"origin_{v}"
@@ -80,14 +90,14 @@ if __name__ == '__main__':
     
 
     # create origin image
-    list = {"acm":(3025,2),"dblp":(4057,2),"hhar":(10300,3),"reut":(10000,3),"cite":(3227,2)}
+    # list = {"acm":(3025,2),"dblp":(4057,2),"hhar":(10300,3),"reut":(10000,3),"cite":(3227,2)}
 
-    for v in list:
-        ori = f"origin_{v}"
-        # ori = f"{v}"
-        sv = t_sne(np.loadtxt(f"./origin/{v}.txt"),np.loadtxt(f"./origin/{v}_label.txt"),list[v][0],list[v][1])
-        # sv.savefig(f"sne/{ori}_o.pdf", format='pdf', bbox_inches='tight', pad_inches=0.1)
-        # sv.savefig(f"sne/{ori}_o.eps", format='eps', bbox_inches='tight', pad_inches=0.1)
-        # sv.savefig(f"sne/{ori}_o.svg", format='svg', bbox_inches='tight', pad_inches=0.1)
+    # for v in list:
+    #     ori = f"origin_{v}"
+    #     # ori = f"{v}"
+    #     sv = t_sne(np.loadtxt(f"./origin/{v}.txt"),np.loadtxt(f"./origin/{v}_label.txt"),list[v][0],list[v][1])
+    #     # sv.savefig(f"sne/{ori}_o.pdf", format='pdf', bbox_inches='tight', pad_inches=0.1)
+    #     # sv.savefig(f"sne/{ori}_o.eps", format='eps', bbox_inches='tight', pad_inches=0.1)
+    #     # sv.savefig(f"sne/{ori}_o.svg", format='svg', bbox_inches='tight', pad_inches=0.1)
 
-        sv.savefig(f"sne/{ori}_o.png",dpi=1200)
+    #     sv.savefig(f"sne/{ori}_o.png",dpi=1200)
