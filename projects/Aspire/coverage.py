@@ -105,5 +105,5 @@ fig.legend(
 )
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])
-plt.savefig("./projects/ASPIRE/output/coverage_study.png", dpi=1200)
-# plt.show()
+# plt.savefig("./projects/ASPIRE/output/coverage_study.png", dpi=1200)
+plt.show()

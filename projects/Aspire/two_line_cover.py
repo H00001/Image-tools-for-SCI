@@ -96,5 +96,5 @@ plt.tight_layout(rect=[0, 0.0225, 1, 0.90])  # 留出上方空间
 
 
 # 
-plt.savefig("output/cover.png")
-# plt.show()
+# plt.savefig("output/cover.png")
+plt.show()

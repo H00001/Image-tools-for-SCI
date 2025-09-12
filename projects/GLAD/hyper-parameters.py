@@ -85,6 +85,6 @@ plt.subplots_adjust(left=0, bottom=0.1, right=0.9, top=1, wspace=-0.15, hspace=0
 plt.tight_layout()
 
 # Save and show the plot
-plt.savefig('./projects/GLAD/output/hyper-3D.png', dpi=600, transparent=False)
+# plt.savefig('./projects/GLAD/output/hyper-3D.png', dpi=600, transparent=False)
 
 plt.show()
